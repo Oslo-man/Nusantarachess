@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.vercel/
+.env
+.env.*
+!.env.example
+server/data/
+*.log
+.DS_Store
+
+# .js hasil build Node (dihasilkan dari .ts oleh `npm run build:node`; lihat tools/build-ts.mjs)
+shared/*.js
+tools/*.js
+server/index.js
+server/api/*.js
+server/lib/*.js
+server/routes/*.js
+server/scripts/*.js
+api/**/*.js
+api/ssr/_lib/app-render.cjs   # bundel render SSR (npm run build:ssr)
+
+# Berkas aset pengguna (tidak ada di repo awal): taruh di public/images, public/sounds, dst.
+# Folder dipertahankan lewat .gitkeep; isi aset TIDAK diabaikan agar ikut ter-commit.

@@ -1,0 +1,5 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": { "moduleDetection": "legacy" },
+  "include": ["../src/types/window.d.ts", "../src/types/loose-dom.d.ts", "../src/types/chess-engine.d.ts", "../src/features/bot/0*.ts"]
+}

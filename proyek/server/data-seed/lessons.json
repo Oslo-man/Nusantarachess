@@ -1,0 +1,288 @@
+{
+  "categories": [
+    {
+      "id": "opening",
+      "title": "Opening Trainer",
+      "description": "Prinsip pembukaan, repertoire dasar, dan variasi umum.",
+      "icon": "<path d=\"M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z\"/>"
+    },
+    {
+      "id": "middlegame",
+      "title": "Middlegame Plan Trainer",
+      "description": "Struktur pion, posisi bidak, pawn break, weak squares, dan serangan raja.",
+      "icon": "<rect x=\"3\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\"/>"
+    },
+    {
+      "id": "endgame",
+      "title": "Endgame Trainer",
+      "description": "King & pawn, rook endgame, minor-piece endgame, checkmate, dan promosi.",
+      "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 3\"/>"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "opening-development",
+      "category": "opening",
+      "title": "Kembangkan Bidak Lebih Dulu",
+      "summary": "Keluarkan Kuda dan Gajah sebelum bidak lain bergerak dua kali.",
+      "learn": "Di 10 langkah pertama, prioritas utama adalah MENGEMBANGKAN bidak minor (Kuda dan Gajah) ke petak aktif — bukan mendorong banyak pion atau menggerakkan satu bidak berkali-kali. Semakin cepat bidak keluar, semakin cepat kamu bisa melakukan roque (castling) dan mengontrol tengah papan.",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3",
+      "fenCaption": "Setelah 1.e4 e5 2.Nf3 Nc6 3.Bc4 — giliran Hitam.",
+      "choices": [
+        "Bc5",
+        "a6",
+        "h6",
+        "Qf6"
+      ],
+      "correctSan": "Bc5",
+      "explanation": "Bc5 mengembangkan Gajah ke diagonal aktif (Italian Game), sekaligus mengincar petak f2 — sejalan dengan Kuda dan Gajah Putih yang sudah keluar lebih dulu. a6/h6 tidak mengembangkan bidak apapun, dan Qf6 mengeluarkan Ratu terlalu dini (rawan diusir sambil kehilangan tempo).",
+      "wrongFeedback": {
+        "a6": "Langkah pion tepi ini tidak mengembangkan bidak apapun — di posisi ini kamu masih punya Gajah dan Kuda yang menganggur.",
+        "h6": "Sama seperti a6, langkah ini hanya mencegah pin yang belum terjadi, sambil membuang giliran berharga di awal permainan.",
+        "Qf6": "Ratu yang keluar sedini ini gampang diusir dengan tempo oleh Kuda/Gajah lawan, membuatmu kehilangan waktu berharga."
+      }
+    },
+    {
+      "id": "opening-center-control",
+      "category": "opening",
+      "title": "Kuasai Kotak Tengah",
+      "summary": "Pion tengah (e4/d4/e5/d5) memberi ruang gerak untuk semua bidak.",
+      "learn": "Langkah pertama yang paling kuat biasanya mendorong pion ke tengah papan (e4 atau d4 untuk Putih). Pion tengah membuka diagonal untuk Gajah, memberi ruang untuk Kuda, dan membatasi opsi lawan — jauh lebih berharga daripada pion sayap di awal permainan.",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "fenCaption": "Posisi awal — giliran Putih.",
+      "choices": [
+        "e4",
+        "a4",
+        "h3",
+        "Nc3"
+      ],
+      "correctSan": "e4",
+      "explanation": "e4 langsung mengambil kotak tengah, membuka diagonal untuk Gajah f1, dan menyiapkan pengembangan cepat. a4/h3 adalah langkah sayap yang tidak berkontribusi ke kontrol tengah. Nc3 juga sah tapi mengunci pion d2 sehingga Gajah c1 sulit keluar — bukan pilihan seefisien e4 di langkah pertama.",
+      "wrongFeedback": {
+        "a4": "Pion sayap ini tidak membantu kontrol tengah maupun pengembangan bidak lain di awal permainan.",
+        "h3": "Sama seperti a4 — langkah pencegahan yang belum diperlukan, membuang tempo di pembukaan.",
+        "Nc3": "Kuda ini sah dikembangkan, tapi menutup jalur Gajah c1 dan tidak langsung mengklaim kotak tengah seperti e4."
+      }
+    },
+    {
+      "id": "opening-king-safety",
+      "category": "opening",
+      "title": "Amankan Raja Lebih Awal",
+      "summary": "Roque (castling) begitu jalurnya terbuka, jangan ditunda tanpa alasan.",
+      "learn": "Setelah Kuda dan Gajah di antara Raja dan Benteng sudah dikembangkan, ROQUE (castling) secepatnya. Raja di tengah papan rawan diserang; roque memindahkannya ke sudut yang lebih aman sekaligus mengaktifkan Benteng.",
+      "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "fenCaption": "Setelah 3...Bc5 — giliran Putih, jalur roque kingside sudah terbuka.",
+      "choices": [
+        "O-O",
+        "a3",
+        "d3",
+        "h4"
+      ],
+      "correctSan": "O-O",
+      "explanation": "Jalur antara Raja dan Benteng kingside sudah kosong (Kuda dan Gajah sudah keluar), jadi O-O adalah prioritas — mengamankan Raja sekaligus mengaktifkan Benteng f1. a3/d3/h4 menunda keamanan Raja tanpa keperluan mendesak.",
+      "wrongFeedback": {
+        "a3": "Langkah pencegahan minor ini bisa menunggu — jalur roque sudah terbuka dan sebaiknya segera dipakai.",
+        "d3": "Berguna untuk membuka Gajah c1, tapi keamanan Raja lebih mendesak selama jalur roque sudah tersedia.",
+        "h4": "Pion sayap ini melemahkan struktur di depan Raja sendiri, justru berlawanan dengan prinsip keamanan Raja."
+      }
+    },
+    {
+      "id": "opening-punish-early-queen",
+      "category": "opening",
+      "title": "Hukum Ratu yang Keluar Dini",
+      "summary": "Ratu lawan yang keluar terlalu awal bisa diserang sambil mengembangkan bidak.",
+      "learn": "Ratu adalah bidak paling berharga selain Raja — kalau lawan mengeluarkannya terlalu dini (sebelum bidak minor selesai berkembang), serang balik Ratu itu sambil mengembangkan bidakmu sendiri. Lawan akan kehilangan tempo besar karena harus memindahkan Ratu berkali-kali.",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+      "fenCaption": "Setelah 1.e4 e5 2.Qh5?! Nc6 3.Bc4 — giliran Hitam. Ratu Putih di h5 mengintai f7.",
+      "choices": [
+        "g6",
+        "Nf6",
+        "d6",
+        "Qe7"
+      ],
+      "correctSan": "g6",
+      "explanation": "g6 menendang Ratu Putih sekaligus membuka diagonal untuk Gajah f8 — dua manfaat sekaligus dari satu langkah pion. Ratu Putih terpaksa mundur, dan Hitam sudah unggul tempo. Nf6 tampak wajar tapi tidak langsung menyerang Ratu; d6/Qe7 pasif dan membiarkan Putih menyusun ancaman lain di f7.",
+      "wrongFeedback": {
+        "Nf6": "Langkah pengembangan yang wajar, tapi tidak langsung menghukum Ratu yang keluar dini — kamu melewatkan tempo gratis.",
+        "d6": "Langkah bertahan pasif ini tidak memanfaatkan kelemahan Ratu Putih yang sudah keluar terlalu jauh.",
+        "Qe7": "Memblokir Gajah sendiri dan tidak menyerang apapun — Ratu Putih di h5 tetap aman."
+      }
+    },
+    {
+      "id": "middlegame-king-attack",
+      "category": "middlegame",
+      "title": "Rook Lift untuk Serang Raja",
+      "summary": "Angkat Benteng ke rank terbuka menuju sayap raja lawan.",
+      "learn": "Ketika Ratu-mu sudah mengintai dekat raja lawan, satu Benteng yang 'diangkat' (rook lift) lewat rank ketiga ke file terbuka bisa menggandakan tekanan secara mendadak — sering menghasilkan ancaman mat yang sulit ditangkis.",
+      "fen": "r2q2rk/4b3/p3pnQ1/3p2p1/8/3R4/PPP2PPP/R5K1 w - - 4 21",
+      "fenCaption": "Posisi asli dari partai (database puzzle Lichess) — giliran Putih. Ratu sudah di g6.",
+      "choices": [
+        "Rh3+",
+        "Rad1",
+        "a4",
+        "c3"
+      ],
+      "correctSan": "Rh3+",
+      "explanation": "Rh3+ mengangkat Benteng dari d3 ke file-h yang terbuka, memberi cek sekaligus menggandakan serangan bersama Ratu di g6 — Hitam terpaksa bertahan dengan Nh7 dan setelah itu Qxh7 sudah skakmat. Rad1/a4/c3 adalah langkah wajar tapi kehilangan momentum serangan yang sudah matang.",
+      "wrongFeedback": {
+        "Rad1": "Benteng ini tetap pasif di file tertutup — momentum serangan di sayap raja lawan justru terbuang.",
+        "a4": "Langkah sayap ratu ini sama sekali tidak relevan dengan ancaman yang sudah matang di sayap raja.",
+        "c3": "Langkah konsolidasi ini membuang tempo saat kamu justru punya kesempatan menyerang langsung."
+      }
+    },
+    {
+      "id": "middlegame-pawn-break",
+      "category": "middlegame",
+      "title": "Minority Attack (Pawn Break)",
+      "summary": "Dorong pion minoritas untuk merusak struktur pion lawan.",
+      "learn": "Saat kamu punya lebih sedikit pion di satu sayap (mis. 2 vs 3), rencana klasik adalah mendorong pion itu maju (minority attack) untuk memaksa pertukaran yang merusak struktur pion lawan, menciptakan kelemahan permanen (backward pawn/isolated pawn) untuk diserang nanti.",
+      "fen": "r1bq1rk1/pp3ppp/2n1pn2/2bp4/3P4/2N1PN2/PPQ1BPPP/R1B2RK1 w - - 4 9",
+      "fenCaption": "Struktur Karlsbad tipikal (Queen's Gambit) — giliran Putih. Putih punya minoritas pion a/b di sayap ratu.",
+      "choices": [
+        "b4",
+        "a3",
+        "Rb1",
+        "h3"
+      ],
+      "correctSan": "b4",
+      "explanation": "b4 memulai minority attack — rencananya lanjut b5 memaksa Hitam memilih antara menukar (meninggalkan pion c6 terisolasi/lemah) atau membiarkan bxc6 membuka file-b untuk Benteng Putih. a3/Rb1/h3 adalah langkah persiapan yang sah tapi belum benar-benar memulai rencana strukturalnya.",
+      "wrongFeedback": {
+        "a3": "Langkah persiapan yang terlalu lambat — b4 langsung memulai rencana minority attack tanpa menunggu.",
+        "Rb1": "Benteng ini akan berguna NANTI mendukung file-b terbuka, tapi rencana harus dimulai dengan mendorong pion lebih dulu.",
+        "h3": "Langkah ini di sisi papan yang salah sama sekali — tidak berkontribusi ke rencana sayap ratu."
+      }
+    },
+    {
+      "id": "middlegame-weak-squares",
+      "category": "middlegame",
+      "title": "Tempati Petak Lemah (Outpost)",
+      "summary": "Kuda di petak yang tak bisa diusir pion lawan adalah keunggulan permanen.",
+      "learn": "Sebuah 'petak lemah' (weak square/outpost) adalah kotak di wilayah lawan yang tidak bisa lagi diserang oleh pion mereka. Kuda yang menempati outpost seperti ini sangat sulit diusir dan bisa mendominasi permainan — sering lebih kuat dari Gajah di posisi tertutup.",
+      "fen": "r2q1rk1/1b2bppp/p1n1pn2/1p6/3P4/1BN2N2/PP3PPP/R1BQR1K1 w - - 0 12",
+      "fenCaption": "Posisi tipe Ruy Lopez lanjutan — giliran Putih. Petak d5 tidak bisa lagi diserang pion c/e Hitam.",
+      "choices": [
+        "Nd5",
+        "a4",
+        "Bg5",
+        "Bd2"
+      ],
+      "correctSan": "Nd5",
+      "explanation": "Nd5 menempatkan Kuda di outpost permanen — pion c6 dan e6 Hitam tidak bisa mengusirnya tanpa melemahkan diri sendiri. Dari d5, Kuda mengintai f6, c7, dan b6 sekaligus. a4/Bg5/Bd2 adalah langkah wajar tapi melewatkan kesempatan menempati petak sekuat ini.",
+      "wrongFeedback": {
+        "a4": "Langkah sayap ratu ini sah tapi mengabaikan petak d5 yang sudah siap ditempati Kuda tanpa risiko diusir.",
+        "Bg5": "Pin ini bisa berguna nanti, tapi menempati outpost d5 memberikan keunggulan struktural jangka panjang yang lebih besar.",
+        "Bd2": "Mengembangkan Gajah ini sah, namun kesempatan menempati petak d5 sebaiknya tidak ditunda."
+      }
+    },
+    {
+      "id": "middlegame-piece-placement",
+      "category": "middlegame",
+      "title": "Sentralisasi Bidak",
+      "summary": "Bidak di tengah papan mengontrol lebih banyak kotak daripada di pinggir.",
+      "learn": "Kuda di tengah papan (mis. e5/d5) mengontrol hingga 8 kotak, sementara di sudut papan (a1/h8) hanya 2 kotak. Prinsip 'a knight on the rim is dim' — selalu cari kesempatan memindahkan bidak minor ke petak sentral yang didukung, terutama Kuda.",
+      "fen": "r1bq1rk1/pp1nbppp/2p1pn2/3p4/2PP4/1P2PN2/PB2BPPP/RN1Q1RK1 w - - 2 9",
+      "fenCaption": "Posisi tipe Catalan/QGD — giliran Putih. Petak e5 kosong dan didukung penuh.",
+      "choices": [
+        "Ne5",
+        "Nbd2",
+        "a3",
+        "Qc2"
+      ],
+      "correctSan": "Ne5",
+      "explanation": "Ne5 mensentralisasi Kuda ke petak terkuat di papan, didukung pion d4 dan mengintai f7/d7/c6. Dari sini Kuda jauh lebih aktif daripada di posisi awal. Nbd2/a3/Qc2 adalah langkah pengembangan wajar tapi tidak memanfaatkan petak sentral sekuat e5 yang sedang tersedia.",
+      "wrongFeedback": {
+        "Nbd2": "Kuda ini memang perlu dikembangkan, tapi bukan ke petak sekuat e5 yang sudah tersedia untuk Kuda f3.",
+        "a3": "Langkah pencegahan ini bisa menunggu — sentralisasi Kuda ke e5 lebih mendesak dan lebih berharga.",
+        "Qc2": "Langkah persiapan yang sah, namun melewatkan kesempatan menempati petak sentral terkuat di papan."
+      }
+    },
+    {
+      "id": "endgame-king-pawn",
+      "category": "endgame",
+      "title": "Opposition & Outflanking",
+      "summary": "Raja harus melangkah ke samping untuk merebut opposition, bukan maju lurus.",
+      "learn": "Dalam endgame Raja+pion vs Raja, pihak yang memegang 'opposition' (raja berhadapan dengan satu kotak jarak, giliran LAWAN untuk jalan) memaksa raja lawan menyingkir. Kalau opposition langsung tidak tersedia, teknik 'outflanking' — melangkah ke SAMPING (bukan maju lurus) — dipakai untuk merebutnya.",
+      "fen": "4k3/8/4K3/4P3/8/8/8/8 w - - 0 1",
+      "fenCaption": "Posisi textbook King & Pawn — giliran Putih. Raja Hitam tepat di depan pion.",
+      "choices": [
+        "Kd6",
+        "Kf6",
+        "Kf5",
+        "Kd5"
+      ],
+      "correctSan": "Kd6",
+      "explanation": "Kd6 melangkah ke SAMPING (outflanking) untuk merebut opposition secara tidak langsung, memaksa Raja Hitam mundur di langkah berikutnya. Kf6 melangkah ke arah yang salah — Raja Hitam justru bisa mempertahankan opposition dari sisi itu (King e7 tetap sejajar). Kf5/Kd5 melepas kontak dengan pion ke rank yang lebih rendah, kehilangan momentum yang sudah ada.",
+      "wrongFeedback": {
+        "Kf6": "Outflanking ke arah ini memberi Raja Hitam kesempatan mempertahankan opposition dari sisi kanan.",
+        "Kf5": "Langkah ini melepas kontak dengan pion tanpa benar-benar merebut opposition.",
+        "Kd5": "Sama seperti Kf5 — mundur ke rank yang lebih rendah ini melepas momentum yang seharusnya dipakai untuk outflank ke d6."
+      }
+    },
+    {
+      "id": "endgame-rook",
+      "category": "endgame",
+      "title": "Lucena Position (Building a Bridge)",
+      "summary": "Gunakan Benteng sendiri untuk memblokir cek horizontal lawan.",
+      "learn": "Lucena Position adalah posisi rook-endgame paling terkenal: pion sudah di rank ke-7, tapi Raja sendiri terjebak karena Benteng lawan mengontrol satu file penuh sekaligus terus memberi cek dari belakang. Solusinya adalah 'building a bridge' — Benteng sendiri masuk ke rank ke-4 untuk memblokir jalur cek lawan.",
+      "fen": "4K3/2k1P3/8/8/8/8/5r2/6R1 w - - 0 1",
+      "fenCaption": "Lucena Position klasik — giliran Putih.",
+      "choices": [
+        "Rc1+",
+        "Rg7",
+        "Rf1",
+        "Rh1"
+      ],
+      "correctSan": "Rc1+",
+      "explanation": "Rc1+ memulai rencana 'membangun jembatan': Benteng akan pindah ke rank 4 (via c4) untuk memblokir cek horizontal Hitam, membiarkan Raja Putih akhirnya membebaskan jalur promosi. Rg7 dan Rh1 tidak menyelesaikan masalah cek berulang. Rf1 mengarah ke file yang sudah dikuasai Benteng Hitam sendiri — tidak membantu rencana jembatan sama sekali.",
+      "wrongFeedback": {
+        "Rg7": "Benteng ini tidak membantu rencana 'jembatan' — Hitam tetap bisa terus memberi cek dari belakang.",
+        "Rf1": "Menuju file yang sudah dikuasai Benteng Hitam tidak menyelesaikan masalah cek berulang yang menahan Raja Putih.",
+        "Rh1": "Benteng tetap di rank pertama tidak membantu memblokir jalur cek horizontal Hitam nantinya."
+      }
+    },
+    {
+      "id": "endgame-minor-piece",
+      "category": "endgame",
+      "title": "Menyederhanakan lewat Pertukaran Pion",
+      "summary": "Dorong pion sendiri untuk menghilangkan pion penghalang lawan.",
+      "learn": "Dalam endgame bidak minor, sering kali rencana terbaik bukan menyerang langsung, tapi menyederhanakan struktur pion lewat pertukaran yang menguntungkan — menghilangkan pion lawan yang menghalangi rencana Raja atau bidak minormu.",
+      "fen": "8/8/8/3B2K1/1p5p/6k1/P7/8 w - - 2 70",
+      "fenCaption": "Posisi asli dari partai (database puzzle Lichess) — giliran Putih.",
+      "choices": [
+        "a3",
+        "Be4",
+        "Bc4",
+        "Kf5"
+      ],
+      "correctSan": "a3",
+      "explanation": "a3 memaksa pertukaran pion (bxa3), menghilangkan pion b4 Hitam yang menghalangi kemajuan Raja Putih di sayap ratu — struktur jadi lebih sederhana dan lebih mudah dimenangkan. Be4/Bc4 menggeser Gajah tanpa menyelesaikan masalah pion b4. Kf5 tidak menyelesaikan masalah pion b4 sama sekali.",
+      "wrongFeedback": {
+        "Be4": "Gajah berpindah ke diagonal lain, tapi pion b4 yang menghalangi kemajuan Raja tetap tidak tersentuh.",
+        "Bc4": "Langkah ini tidak menyelesaikan masalah pion b4 yang menghalangi kemajuan struktural.",
+        "Kf5": "Raja bergerak ke arah yang kurang relevan — pion b4 tetap menjadi penghalang."
+      }
+    },
+    {
+      "id": "endgame-checkmate-technique",
+      "category": "endgame",
+      "title": "Skakmat Raja + Ratu (Box Method)",
+      "summary": "Batasi raja lawan dengan Ratu dulu, jangan beri cek sebelum kotaknya sempit.",
+      "learn": "Untuk skakmat dengan Raja+Ratu vs Raja, teknik paling aman adalah 'box method': tempatkan Ratu satu langkah-kuda dari raja lawan untuk membuat 'kotak' yang membatasi geraknya, LALU perkecil kotak itu sedikit demi sedikit — tanpa terburu-buru memberi cek sebelum Rajamu ikut mendekat.",
+      "fen": "8/8/8/4k3/7Q/8/8/K7 w - - 0 1",
+      "fenCaption": "Posisi latihan Raja+Ratu vs Raja — giliran Putih.",
+      "choices": [
+        "Qg4",
+        "Qh5+",
+        "Qe4+",
+        "Kb2"
+      ],
+      "correctSan": "Qg4",
+      "explanation": "Qg4 membuat 'kotak' di sekeliling Raja Hitam (jarak satu langkah-kuda) TANPA memberi cek — Raja Hitam kini hanya punya 3 kotak untuk bergerak, dan tidak bisa mendekati Ratu. Qh5+/Qe4+ memberi cek terlalu dini, membiarkan Raja Hitam lolos ke arah lain. Kb2 sah tapi terlalu lambat dibanding langsung membangun kotak.",
+      "wrongFeedback": {
+        "Qh5+": "Memberi cek sebelum kotak terbentuk membiarkan Raja Hitam melarikan diri ke kotak lain yang masih luas.",
+        "Qe4+": "Sama seperti Qh5+ — cek prematur ini justru memberi Raja Hitam lebih banyak pilihan larinya.",
+        "Kb2": "Mendekatkan Raja itu penting, tapi belakangan — dahulukan membatasi ruang gerak Raja lawan dengan Ratu."
+      }
+    }
+  ]
+}

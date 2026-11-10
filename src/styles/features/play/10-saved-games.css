@@ -1,0 +1,51 @@
+.btn-saved-games {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.saved-games-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin-top: 10px;
+}
+.saved-game-item {
+  background: var(--btn-neutral);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  min-height: var(--tap-min);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.saved-game-item:hover { background: var(--btn-neutral-hover); }
+.saved-game-item:active { transform: scale(0.99); }
+.saved-game-item:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+.saved-game-main {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 4px;
+}
+.saved-game-result { font-weight: 700; font-size: 0.8125rem; }
+.saved-game-result.positive { color: var(--success); }
+.saved-game-result.negative { color: var(--error-text); }
+.saved-game-result.neutral { color: var(--text-muted); }
+.saved-game-opponent { color: var(--text-body); font-size: 0.8125rem; }
+.saved-game-meta {
+  display: flex; gap: 12px;
+  font-size: 0.6875rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.saved-games-empty {
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.8125rem;
+}
+
+
+#replay-page .board-wrapper { flex: 0 0 auto; }
+#replay-page .chessboard { flex: 0 0 auto; }
+#replay-page #replay-copy-pgn-btn { flex: 0 0 auto; margin-top: 8px; }
+#replay-page .move-history-wrap { flex: 0 0 auto; }
+.saved-game-item.is-incomplete { opacity: 0.6; }

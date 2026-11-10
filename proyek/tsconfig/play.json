@@ -1,0 +1,5 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": { "moduleDetection": "legacy" },
+  "include": ["../src/types/window.d.ts", "../src/types/play.d.ts", "../src/features/play/0*.ts"]
+}

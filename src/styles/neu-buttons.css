@@ -1,0 +1,321 @@
+:root :is(
+  .btn-secondary:not(.btn-end-game),
+  .btn-resume-match,
+  .gameover-btn-secondary,
+  .btn-verify,
+  .difficulty-card:not(.selected),
+  .lesson-card,
+  .lesson-nav-btn,
+  .library-page-btn,
+  .time-dropdown:not(.open) .time-dropdown-trigger,
+  .time-option:not(.selected),
+  .time-custom-toggle:not(.selected),
+  .ctrl-btn-draw,
+  .replay-autoplay-btn:not(.is-playing),
+  .option-item:not(.option-item-close),
+  .saved-game-item,
+  .theme-reset-btn,
+  .gh-more-btn,
+  .home-edit-name-btn,
+  .mode-toggle,
+  .help-btn,
+  .review-filter-btn:not(.active),
+  .review-sort-btn:not(.active),
+  .review-view-btn:not(.active),
+  .review-mode-btn:not(.active),
+  .review-nav-btn,
+  .toggle-dropdown-toggle:not(.open),
+  .theme-dropdown-toggle:not(.open),
+  .promotion-option,
+  .bc-secondary,
+  .fmt-current,
+  .fmt-opt,
+  .depth-opt:not(.on),
+  .ms-chip:not(.sel)
+) {
+  background: var(--nbtn-bg);
+  color: var(--nbtn-text);
+  border: 1px solid var(--nbtn-border);
+  border-radius: var(--nbtn-radius);
+  box-shadow: var(--nbtn-shadow);
+  font-weight: 700;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+:root .time-dropdown.open .time-dropdown-trigger {
+  background: var(--nbtn-bg);
+  color: var(--nbtn-text-hover);
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  border-radius: var(--nbtn-radius) var(--nbtn-radius) 0 0;
+}
+
+:root :is(
+  .btn-secondary:not(.btn-end-game),
+  .btn-resume-match,
+  .gameover-btn-secondary,
+  .btn-verify,
+  .difficulty-card:not(.selected),
+  .lesson-card,
+  .lesson-nav-btn,
+  .library-page-btn,
+  .time-dropdown:not(.open) .time-dropdown-trigger,
+  .time-option:not(.selected),
+  .time-custom-toggle:not(.selected),
+  .ctrl-btn-draw,
+  .replay-autoplay-btn:not(.is-playing),
+  .option-item:not(.option-item-close),
+  .saved-game-item,
+  .theme-reset-btn,
+  .gh-more-btn,
+  .home-edit-name-btn,
+  .mode-toggle,
+  .help-btn,
+  .review-filter-btn:not(.active),
+  .review-sort-btn:not(.active),
+  .review-view-btn:not(.active),
+  .review-mode-btn:not(.active),
+  .review-nav-btn,
+  .toggle-dropdown-toggle:not(.open),
+  .theme-dropdown-toggle:not(.open),
+  .promotion-option,
+  .bc-secondary,
+  .fmt-current,
+  .fmt-opt,
+  .depth-opt:not(.on),
+  .ms-chip:not(.sel)
+):is(:hover, :focus-visible):not(:disabled):not([aria-disabled="true"]) {
+  background: var(--nbtn-bg-hover);
+  color: var(--nbtn-text-hover);
+  border-color: var(--nbtn-border-hover);
+  box-shadow: var(--nbtn-shadow-hover);
+}
+
+:root :is(
+  .btn-secondary:not(.btn-end-game),
+  .btn-resume-match,
+  .gameover-btn-secondary,
+  .btn-verify,
+  .difficulty-card:not(.selected),
+  .lesson-card,
+  .lesson-nav-btn,
+  .library-page-btn,
+  .time-dropdown:not(.open) .time-dropdown-trigger,
+  .time-option:not(.selected),
+  .time-custom-toggle:not(.selected),
+  .ctrl-btn-draw,
+  .replay-autoplay-btn:not(.is-playing),
+  .option-item:not(.option-item-close),
+  .saved-game-item,
+  .theme-reset-btn,
+  .gh-more-btn,
+  .home-edit-name-btn,
+  .mode-toggle,
+  .help-btn,
+  .review-filter-btn:not(.active),
+  .review-sort-btn:not(.active),
+  .review-view-btn:not(.active),
+  .review-mode-btn:not(.active),
+  .review-nav-btn,
+  .toggle-dropdown-toggle:not(.open),
+  .theme-dropdown-toggle:not(.open),
+  .promotion-option,
+  .bc-secondary,
+  .fmt-current,
+  .fmt-opt,
+  .depth-opt:not(.on),
+  .ms-chip:not(.sel)
+):active:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--nbtn-bg-active);
+  box-shadow: var(--nbtn-shadow-active);
+}
+
+:root :is(
+  .btn-secondary:not(.btn-end-game),
+  .btn-resume-match,
+  .gameover-btn-secondary,
+  .btn-verify,
+  .lesson-nav-btn,
+  .library-page-btn,
+  .ctrl-btn-draw,
+  .replay-autoplay-btn:not(.is-playing),
+  .theme-reset-btn,
+  .gh-more-btn,
+  .help-btn,
+  .review-nav-btn,
+  .bc-secondary,
+  .ms-chip:not(.sel)
+):is(:disabled, [aria-disabled="true"]) {
+  background: var(--nbtn-bg-disabled);
+  color: var(--text-disabled);
+  border-color: var(--nbtn-border);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root :is(
+    .btn-secondary, .btn-resume-match, .gameover-btn-secondary, .btn-verify, .difficulty-card, .lesson-card,
+    .lesson-nav-btn, .library-page-btn, .time-dropdown-trigger, .time-option, .time-custom-toggle, .ctrl-btn-draw,
+    .replay-autoplay-btn, .option-item, .saved-game-item, .theme-reset-btn, .gh-more-btn, .home-edit-name-btn, .mode-toggle,
+    .help-btn, .review-filter-btn, .review-sort-btn, .review-view-btn, .review-mode-btn, .review-nav-btn,
+    .toggle-dropdown-toggle, .theme-dropdown-toggle, .promotion-option, .bc-secondary, .fmt-current, .fmt-opt,
+    .depth-opt, .ms-chip, .review-list-item, .review-grid-item
+  ) { transition: none; }
+}
+
+:root :is(
+  .btn:not(.btn-secondary), .btn-primary, .btn-skip, .btn-move-submit, .btn-end-game, .home-play-btn,
+  .landing-header-cta, #confirm-level-btn, .leaderboard-search-btn, .btn-start-match, .gameover-btn-primary,
+  .bc-primary, .replay-autoplay-btn.is-playing
+) {
+  border-radius: var(--nbtn-radius);
+  font-weight: 800;
+}
+
+:root :is(
+  .home-rating-box, .home-stats-cell, .profile-rating-card:not(.profile-rating-card-puzzle),
+  .profile-record-item, .leaderboard-my-rank, .stat-box
+) {
+  background: var(--nbtn-bg);
+  border: 1px solid var(--nbtn-border);
+  border-radius: var(--npanel-radius);
+  box-shadow: var(--nbtn-shadow);
+}
+:root .profile-rating-card-puzzle {
+  border-radius: var(--npanel-radius);
+  box-shadow: var(--nbtn-shadow);
+}
+:root :is(.home-rating-box, .home-stats-cell, .profile-rating-card, .profile-record-item, .stat-box) {
+  align-items: center;
+  text-align: center;
+}
+:root :is(.home-rating-value, .home-stats-cell-value, .profile-rating-value, .profile-record-value) {
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+:root :is(.home-rating-label, .home-stats-cell-label, .profile-rating-label, .profile-record-label) {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+:root :is(.leaderboard-list, .leaderboard-tabs) {
+  border: 1px solid var(--nbtn-border);
+  border-radius: var(--npanel-radius);
+  box-shadow: var(--nbtn-shadow);
+}
+:root .leaderboard-tabs { background: var(--nbtn-bg); }
+
+:root .leaderboard-tab.is-active {
+  background: var(--nbtn-bg-hover);
+  color: var(--nbtn-text-hover);
+  font-weight: 700;
+  border-radius: calc(var(--npanel-radius) - 3px);
+  box-shadow: var(--nbtn-shadow);
+}
+
+:root :is(
+  .depth-opt.on,
+  .ms-chip.sel,
+  .review-sort-btn.active,
+  .review-view-btn.active,
+  .review-mode-btn.active,
+  .review-filter-btn.active:not([data-filter="solved"]):not([data-filter="failed"])
+) {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--border-selected);
+  border-radius: var(--nbtn-radius);
+  box-shadow: none;
+  font-weight: 700;
+}
+
+:root :is(.toggle-dropdown-toggle, .theme-dropdown-toggle).open {
+  background: var(--nbtn-bg);
+  color: var(--nbtn-text-hover);
+  border: 1px solid var(--nbtn-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  border-radius: var(--nbtn-radius) var(--nbtn-radius) 0 0;
+  font-weight: 700;
+}
+:root :is(.toggle-dropdown-panel, .theme-dropdown-panel) {
+  border-radius: 0 0 var(--nbtn-radius) var(--nbtn-radius);
+}
+
+:root :is(.review-list-item, .review-grid-item) {
+  background: var(--nbtn-bg);
+  border-top-color: var(--nbtn-border);
+  border-right-color: var(--nbtn-border);
+  border-bottom-color: var(--nbtn-border);
+  border-radius: var(--nbtn-radius);
+  box-shadow: var(--nbtn-shadow);
+}
+:root .review-grid-item { border-left-color: var(--nbtn-border); }
+:root :is(.review-list-item, .review-grid-item):is(:hover, :focus-visible) {
+  background: var(--nbtn-bg-hover);
+  border-top-color: var(--nbtn-border-hover);
+  border-right-color: var(--nbtn-border-hover);
+  border-bottom-color: var(--nbtn-border-hover);
+  box-shadow: var(--nbtn-shadow-hover);
+}
+:root .review-grid-item:is(:hover, :focus-visible) { border-left-color: var(--nbtn-border-hover); }
+:root :is(.review-list-item, .review-grid-item):active {
+  background: var(--nbtn-bg-active);
+  box-shadow: var(--nbtn-shadow-active);
+}
+
+:root .profile-chart-tabs {
+  background: var(--nbtn-bg);
+  border: 1px solid var(--nbtn-border);
+  border-radius: var(--npanel-radius);
+  box-shadow: var(--nbtn-shadow);
+}
+:root .profile-chart-tab.is-active {
+  background: var(--nbtn-bg-hover);
+  color: var(--nbtn-text-hover);
+  font-weight: 700;
+  border-radius: calc(var(--npanel-radius) - 3px);
+  box-shadow: var(--nbtn-shadow);
+}
+
+:root select:is(.library-select, .level-select, .header-select, #_),
+:root :is(.bc-main, .bc-st-select, .bs-modal, .settings-panel, #_) select {
+  background-color: #3B3937;
+  color: var(--nbtn-text);
+  border: 1px solid var(--nbtn-border);
+  border-radius: var(--nbtn-radius);
+  box-shadow: var(--nbtn-shadow);
+  font-weight: 700;
+}
+:root select:is(.library-select, .level-select, .header-select, #_):not(.bs-select),
+:root :is(.bc-main, .bc-st-select, .bs-modal, .settings-panel, #_) select:not(.bs-select) {
+  background-image: var(--nbtn-bg);
+}
+:root select:is(.library-select, .level-select, .header-select, #_):hover:not(:disabled):not(:focus),
+:root :is(.bc-main, .bc-st-select, .bs-modal, .settings-panel, #_) select:hover:not(:disabled):not(:focus) {
+  background-color: #444240;
+  color: var(--nbtn-text-hover);
+  border-color: var(--nbtn-border-hover);
+  box-shadow: var(--nbtn-shadow-hover);
+}
+:root select:is(.library-select, .level-select, .header-select, #_):hover:not(:disabled):not(:focus):not(.bs-select),
+:root :is(.bc-main, .bc-st-select, .bs-modal, .settings-panel, #_) select:hover:not(:disabled):not(:focus):not(.bs-select) {
+  background-image: var(--nbtn-bg-hover);
+}
+:root select:is(.library-select, .level-select, .header-select, #_):focus,
+:root :is(.bc-main, .bc-st-select, .bs-modal, .settings-panel, #_) select:focus {
+  background-color: #3B3937;
+  border-color: var(--border-selected);
+  box-shadow: var(--nbtn-shadow), 0 0 0 3px rgba(129, 182, 76, 0.22);
+}
+:root select:is(.library-select, .level-select, .header-select, #_):disabled,
+:root :is(.bc-main, .bc-st-select, .bs-modal, .settings-panel, #_) select:disabled {
+  background-color: #353331;
+  color: var(--text-disabled);
+  border-color: var(--nbtn-border);
+  box-shadow: none;
+}
+:root select:is(.library-select, .level-select, .header-select, #_):disabled:not(.bs-select),
+:root :is(.bc-main, .bc-st-select, .bs-modal, .settings-panel, #_) select:disabled:not(.bs-select) {
+  background-image: var(--nbtn-bg-disabled);
+}

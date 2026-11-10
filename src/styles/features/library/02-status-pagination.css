@@ -1,0 +1,43 @@
+.library-empty-msg,
+.library-loading-msg {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  padding: var(--space-6) var(--space-4);
+}
+
+.library-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+}
+
+.library-page-btn {
+  min-height: var(--tap-min);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--btn-neutral);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--btn-transition);
+}
+.library-page-btn:hover:not(:disabled) { background: var(--btn-neutral-hover) }
+.library-page-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+.library-page-btn:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+
+.library-page-status {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 500px) {
+  .library-controls { flex-direction: row; }
+  .library-search-row { flex: 1; }
+  .library-filter-row { flex-shrink: 0; width: auto; }
+  .library-select { min-width: 130px; }
+}

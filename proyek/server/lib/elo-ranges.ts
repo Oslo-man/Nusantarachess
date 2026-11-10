@@ -1,0 +1,12 @@
+"use strict";
+
+const PLAYER_ELO_MIN = 1300;
+const PLAYER_ELO_MAX = 3200;
+
+const UCI_ELO_MIN = 1320;
+const UCI_ELO_MAX = 3190;
+
+const GUEST_BOT_ELO_MIN = 1320;
+const GUEST_BOT_ELO_MAX = 3120;
+
+module.exports = { PLAYER_ELO_MIN, PLAYER_ELO_MAX, UCI_ELO_MIN, UCI_ELO_MAX, GUEST_BOT_ELO_MIN, GUEST_BOT_ELO_MAX };

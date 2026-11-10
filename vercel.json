@@ -1,0 +1,120 @@
+{
+  "buildCommand": "npm run build:vercel",
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/ssr/*.ts": {
+      "includeFiles": "site.config.json"
+    },
+    "api/sitemap-profiles.ts": {
+      "includeFiles": "site.config.json"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/ssr/home"
+    },
+    {
+      "source": "/lessons",
+      "destination": "/api/ssr/lessons"
+    },
+    {
+      "source": "/lessons/:id",
+      "destination": "/api/ssr/lessons/:id"
+    },
+    {
+      "source": "/leaderboard",
+      "destination": "/api/ssr/leaderboard"
+    },
+    {
+      "source": "/profile/:username",
+      "destination": "/api/ssr/profile/:username"
+    },
+    {
+      "source": "/sitemap-profiles.xml",
+      "destination": "/api/sitemap-profiles"
+    },
+    {
+      "source": "/image/:path*",
+      "destination": "/images/:path*"
+    },
+    {
+      "source": "/sound/:path*",
+      "destination": "/sounds/:path*"
+    },
+    {
+      "source": "/((?!api/|app/|styles/|features/|shared/|images/|sounds/|image/|sound/|vendor/|.*\\..*).*)",
+      "destination": "/spa.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://unpkg.com https://cdn.jsdelivr.net; media-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://nusantarachess-api.vercel.app https://lichess.org https://api.chess.com https://cdnjs.cloudflare.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        }
+      ]
+    },
+    {
+      "source": "/spa.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).wasm",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        }
+      ]
+    },
+    {
+      "source": "/(app|features|styles|shared|vendor)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
+        }
+      ]
+    }
+  ]
+}

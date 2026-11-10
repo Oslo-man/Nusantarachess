@@ -1,0 +1,49 @@
+<svg
+            width="120"
+            height="120"
+            viewBox="0 0 120 120"
+            id="svg5"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <defs id="defs2" />
+            <g
+            id="layer1"
+            style="display:inline"
+            >
+            <ellipse
+                style="display:inline;fill:#a98866;fill-opacity:1;stroke:none;stroke-width:0.999462"
+                id="path111"
+                cx="60"
+                cy="59.773922"
+                rx="60"
+                ry="59.773922"
+            />
+            </g>
+            <g id="layer2">
+            <g id="layer3">
+                <path
+                style="display:inline;fill:#000000;fill-opacity:0.4;stroke:none;stroke-width:4.34391;stroke-linejoin:round"
+                d="m 20.448744,32.537329 c 17.662962,-0.803674 28.965997,1.545309 34.307091,6.849663 V 94.068041 C 47.199259,90.203754 36.868563,87.470164 20.448744,87.218371 Z"
+                id="path6305"
+                />
+                <path
+                style="display:inline;fill:#fefefd;fill-opacity:1;stroke:none;stroke-width:4.18857;stroke-linejoin:round"
+                d="m 24.565815,27.793565 c 16.422272,-0.803673 26.931354,1.545309 31.897276,6.849663 V 89.324276 C 49.437307,85.459993 39.832265,82.726397 24.565815,82.474609 Z"
+                id="path23455"
+                />
+            </g>
+            <g id="layer4">
+                <path
+                style="display:inline;fill:#000000;fill-opacity:0.4;stroke:none;stroke-width:4.34391;stroke-linejoin:round"
+                d="M 99.551451,32.537329 C 81.888489,31.733655 70.585454,34.082638 65.24436,39.386992 v 54.681044 c 7.556576,-3.86428 17.887272,-6.59787 34.307091,-6.84967 z"
+                id="path29297"
+                />
+                <path
+                style="display:inline;fill:#fefefd;fill-opacity:1;stroke:none;stroke-width:4.18857;stroke-linejoin:round"
+                d="m 95.434569,27.793565 c -16.42227,-0.803673 -26.931353,1.545309 -31.897275,6.849663 v 54.681048 c 7.025785,-3.864283 16.630827,-6.597879 31.897275,-6.849667 z"
+                id="path6305-6"
+                />
+            </g>
+            </g>
+        </svg>

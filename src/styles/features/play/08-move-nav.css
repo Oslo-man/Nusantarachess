@@ -1,0 +1,43 @@
+.move-nav-panel {
+  width: 100%; flex: 0 0 auto;
+  padding: 6px 10px 0;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  flex-wrap: wrap;
+}
+.nav-btn {
+  min-width: var(--tap-min); height: var(--tap-min);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-btn:hover:not(:disabled) { background: var(--bg-hover); }
+.nav-btn:active:not(:disabled) { transform: scale(0.90); }
+.nav-btn:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+.nav-btn:disabled { opacity: 0.4; cursor: default; }
+
+
+.replay-autoplay { flex: 1 0 100%; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.replay-autoplay-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap;
+  min-height: var(--tap-min); padding: 0 16px; border: none; border-radius: var(--radius-md);
+  background: var(--btn-neutral); color: var(--text-primary);
+  font: 700 13px var(--font-sans); cursor: pointer; transition: var(--btn-transition);
+}
+.replay-autoplay-btn:hover { background: var(--btn-neutral-hover) }
+.replay-autoplay-btn:active { background: var(--btn-neutral-active); transform: scale(0.98) }
+.replay-autoplay-btn:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+.replay-autoplay-btn.is-playing { background: var(--btn-primary-bg); color: var(--btn-primary-text); box-shadow: var(--btn-primary-shadow); }
+.replay-ap-icon { width: 16px; height: 16px; flex: none; fill: currentColor; }
+.replay-ap-pause { display: none; }
+.replay-autoplay-btn.is-playing .replay-ap-play { display: none; }
+.replay-autoplay-btn.is-playing .replay-ap-pause { display: block; }
+.replay-autoplay-speed { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 12px; }
+.replay-autoplay-speed select {
+  min-height: var(--tap-min); padding: 0 10px; border-radius: var(--radius-md);
+  background: var(--bg-surface); color: var(--text-primary); font: 400 13px var(--font-sans);
+  border: 1px solid var(--border-control);
+}

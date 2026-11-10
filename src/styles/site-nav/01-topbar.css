@@ -1,0 +1,102 @@
+html, body {
+  overflow-x: hidden;
+}
+
+:root {
+  --sidebar-w-expanded: 180px;
+  --sidebar-w-collapsed: 64px;
+  --topbar-h: 56px;
+  --bottombar-h: 60px;
+}
+
+.site-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0 var(--space-3);
+  background: var(--bg-surface);
+}
+
+.site-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.site-topbar-brand img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.site-topbar-brand span {
+  font-weight: 700;
+  font-size: 1.0625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 900px) {
+  .site-topbar-brand { display: none; }
+}
+
+.site-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.site-account-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: var(--tap-min);
+  padding: 0 var(--space-2);
+  background: transparent;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.site-account-btn:hover { background: var(--bg-hover); }
+.site-account-btn:hover { }
+
+.site-account-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-box);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+.site-account-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.site-account-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .site-account-name { display: none; }
+}
+

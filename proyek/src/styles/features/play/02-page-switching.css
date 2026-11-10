@@ -1,0 +1,21 @@
+.page {
+  display: none;
+  height: calc(100vh - 56px);
+  height: calc(100dvh - 56px);
+  width: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 899px) {
+  .page {
+    height: calc(100vh - 56px - var(--bottombar-h, 60px));
+    height: calc(100dvh - 56px - var(--bottombar-h, 60px));
+    scroll-padding-bottom: var(--space-4, 16px);
+  }
+}
+.page.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

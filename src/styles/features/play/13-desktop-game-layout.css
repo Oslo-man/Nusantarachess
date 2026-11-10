@@ -1,0 +1,118 @@
+
+
+@media (min-width: 900px) {
+
+  #game-page {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-6) var(--space-5);
+    min-height: calc(100vh - 56px); 
+    box-sizing: border-box;
+  }
+
+  .main-content {
+    max-width: 1100px;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .app-header {
+    max-width: 100%;
+    
+    display: flex;
+    align-items: center;
+    min-height: 0;
+    padding: 0 0 var(--space-4);
+    border-bottom: none;
+  }
+  .app-header .brand-row-center { display: none; }
+  .quit-btn-corner {
+    position: static;
+  }
+
+  .game-area {
+    display: grid;
+    grid-template-columns: minmax(0, 640px) minmax(300px, 380px);
+    grid-template-areas:
+      "opponent   side-head"
+      "board      side-body"
+      "player     side-body"
+      "movenav    side-body";
+    gap: 0 var(--space-5);
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .opponent-row { grid-area: opponent; padding: 0 0 var(--space-2); }
+  .board-wrapper { grid-area: board; padding: 0; }
+  .player-panel { grid-area: player; padding: var(--space-2) 0 0; }
+  .move-nav-panel { grid-area: movenav; padding: var(--space-3) 0 0; justify-content: flex-start; }
+
+  .chessboard {
+    max-width: min(640px, calc(100vh - 260px));
+  }
+
+  .controls-panel {
+    grid-area: side-head;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    padding: 0 0 var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .move-history-wrap {
+    grid-area: side-body;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0;
+    height: min(560px, calc(100vh - 260px));
+    min-height: 320px;
+    padding: 12px 14px 10px;
+  }
+  .move-history-wrap h3 {
+    flex-shrink: 0;
+  }
+  .move-history {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    font-size: 0.875rem;
+  }
+  .move-history li {
+    padding: 4px 10px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .game-area {
+    grid-template-columns: minmax(0, 640px) minmax(340px, 420px);
+  }
+}
+
+@media (min-width: 900px) {
+  #replay-page.active {
+    justify-content: flex-start;
+    padding: var(--space-6) var(--space-5);
+    box-sizing: border-box;
+  }
+  #replay-page .app-header .brand-row-center {
+    display: flex;
+    margin-left: var(--space-3);
+  }
+  #replay-page .game-area {
+    grid-template-areas:
+      "board   side"
+      "movenav side"
+      "copy    side";
+    grid-template-rows: auto auto 1fr;
+  }
+  #replay-page .board-wrapper { grid-area: board; }
+  #replay-page .move-nav-panel { grid-area: movenav; }
+  #replay-page #replay-copy-pgn-btn { grid-area: copy; justify-self: start; }
+  #replay-page .move-history-wrap { grid-area: side; align-self: start; }
+}

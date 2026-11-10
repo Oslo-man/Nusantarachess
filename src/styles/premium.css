@@ -1,0 +1,159 @@
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput,
+  select
+) {
+  background-color: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: var(--field-radius);
+  box-shadow: var(--field-shadow);
+  outline: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput
+) {
+  background-image: var(--field-sheen);
+  color: var(--field-text);
+  caret-color: var(--accent);
+}
+
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput
+)::placeholder {
+  color: var(--field-placeholder);
+  opacity: 1;
+  font-weight: 400;
+}
+
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput,
+  select
+):hover:not(:disabled):not(:focus) {
+  background-color: var(--field-bg-hover);
+  border-color: var(--field-border-hover);
+  box-shadow: var(--field-shadow-hover);
+}
+
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput,
+  select
+):focus,
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput,
+  select
+):focus-visible {
+  background-color: var(--field-bg-focus);
+  border-color: var(--border-selected);
+  box-shadow: var(--field-shadow-focus);
+  outline: none;
+}
+
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput,
+  select
+):disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: var(--field-shadow);
+}
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput
+):read-only:not(:disabled):not(:focus) {
+  color: var(--text-body);
+}
+
+:root select:invalid { color: var(--field-placeholder); }
+
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput
+):-webkit-autofill,
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput
+):-webkit-autofill:hover,
+:root :is(
+  input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+  input:not([type]),
+  textarea,
+  input#FenTextBox,
+  textarea#PgnTextBox,
+  input#move-input,
+  textarea#importInput
+):-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--field-text);
+  caret-color: var(--accent);
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root :is(
+    input:is([type="text"], [type="search"], [type="password"], [type="email"], [type="number"], [type="tel"], [type="url"]),
+    input:not([type]),
+    textarea,
+    input#FenTextBox,
+    textarea#PgnTextBox,
+    input#move-input,
+    textarea#importInput,
+    select
+  ) { transition: none; }
+}

@@ -1,0 +1,191 @@
+#game-page .app-header {
+  border-bottom: none;
+  padding: 8px 10px 4px;
+  display: flex; align-items: center;
+}
+#game-page .app-header-row { display: none; }
+#game-page .quit-btn-corner {
+  position: static;
+  width: var(--tap-min); height: var(--tap-min);
+  padding: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-body);
+  border: 1px solid transparent;
+}
+#game-page .quit-btn-corner:hover { background: var(--bg-hover); color: var(--text-primary); }
+#game-page .quit-btn-corner img { width: 22px; height: 22px; }
+
+#game-page .game-area { padding-bottom: 14px; gap: 0; }
+
+#game-page .opponent-row,
+#game-page .player-panel {
+  width: calc(100% - 20px);
+  margin: 0 10px;
+  padding: 8px 0;
+  gap: 10px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+}
+#game-page .opponent-row { margin-bottom: 8px; }
+#game-page .player-panel { margin-top: 8px; }
+
+#game-page .player-avatar {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+}
+#game-page .player-name { font-size: 0.9375rem; }
+#game-page .elo-muted { font-size: 0.8125rem; }
+
+#game-page .player-clock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 82px;
+  padding: 6px 8px;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  border-radius: var(--radius-md);
+  background: #302E2C;
+  color: #B8B8B8;
+  transition: background-color .15s, color .15s;
+  border: 1px solid transparent;
+}
+#game-page .player-clock { gap: 0; }
+#game-page .player-clock::before,
+#game-page .player-clock::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity .15s;
+}
+#game-page .player-clock::before {
+  margin-right: 4px;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 12h3.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 12h3.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+#game-page .player-clock::after {
+  order: -1;
+  margin-right: -13px;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 12V6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 12V6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+#game-page .player-clock.is-running::before,
+#game-page .player-clock.is-running::after { opacity: 1; }
+#game-page .player-clock.is-running::after { animation: clock-tick 60s steps(60) infinite; }
+@keyframes clock-tick { to { transform: rotate(360deg); } }
+#game-page .player-clock.is-running { background: #F0F0F0; color: #333333; }
+#game-page .player-clock.low-time { color: #B8B8B8; }
+#game-page .player-clock.low-time.is-running { background: #D84040; color: #FFFFFF; }
+
+#game-page .board-wrapper { padding: 0 10px; }
+#game-page .chessboard {
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+#game-page .move-nav-panel {
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  padding: 4px;
+  gap: 4px;
+  flex-wrap: nowrap;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+}
+#game-page .nav-btn {
+  flex: 1 1 0;
+  min-width: 0; height: 40px;
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+}
+#game-page .nav-btn:hover:not(:disabled) { background: var(--btn-neutral); color: var(--text-primary); }
+
+#game-page .controls-panel {
+  width: calc(100% - 20px);
+  margin: 8px 10px 0;
+  padding: 0;
+  gap: var(--space-4);
+  justify-content: center;
+}
+#game-page .ctrl-btn {
+  flex: 0 0 auto;
+  min-width: 56px;
+  height: var(--tap-min);
+  padding: 0 12px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-body);
+  border: 1px solid transparent;
+}
+#game-page .ctrl-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+#game-page .ctrl-btn img { width: 22px; height: 22px; }
+
+#game-page .move-history-wrap {
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  height: 220px;
+  padding: 12px 12px 8px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+}
+#game-page .move-history-wrap h3 {
+  border-bottom: none;
+  padding: 0 2px;
+  margin-bottom: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-primary);
+}
+#game-page .move-history li { padding: 5px 10px; }
+#game-page .move-history li:nth-child(even) { background: var(--bg-subtler); }
+
+@media (min-width: 900px) {
+  #game-page .app-header { padding: 0 0 var(--space-3); }
+  #game-page .opponent-row,
+  #game-page .player-panel,
+  #game-page .move-nav-panel,
+  #game-page .controls-panel,
+  #game-page .board-wrapper { width: 100%; margin-left: 0; margin-right: 0; }
+  #game-page .board-wrapper { padding: 0; }
+  #game-page .opponent-row { margin-bottom: var(--space-2); }
+  #game-page .player-panel { margin-top: var(--space-2); }
+  #game-page .move-nav-panel { margin-top: var(--space-3); justify-content: stretch; }
+  #game-page .controls-panel {
+    margin-bottom: var(--space-3);
+    border-bottom: none;
+    padding: 0;
+  }
+  #game-page .move-history-wrap {
+    width: 100%; margin: 0;
+    height: min(560px, calc(100vh - 260px));
+    padding: 14px 16px 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  #game-page .player-clock { min-width: 72px; font-size: 1rem; padding: 5px 6px; }
+  #game-page .player-clock::before, #game-page .player-clock::after { width: 12px; height: 12px; }
+  #game-page .player-clock::before { margin-right: 3px; }
+  #game-page .player-clock::after { margin-right: -12px; }
+  #game-page .player-avatar { width: 34px; height: 34px; }
+  #game-page .ctrl-btn { padding: 0 8px; min-width: var(--tap-min); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #game-page .player-clock { transition: none; }
+  #game-page .player-clock::before, #game-page .player-clock::after { transition: none; }
+  #game-page .player-clock.is-running::after { animation: none; }
+}

@@ -1,0 +1,20 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "moduleDetection": "force",
+    "types": ["node"]
+  },
+  "include": [
+    "../src/types/window.d.ts",
+    "../src/types/chess-exports.d.ts",
+    "../shared/**/*.ts",
+    "../src/features/profile/*.ts",
+    "../src/features/leaderboard/*.ts",
+    "../src/features/lessons/*.ts",
+    "../src/features/library/*.ts",
+    "../src/features/play/piece-svg-and-sound.ts",
+    "../src/features/gamereview/piece-svg.ts",
+    "../src/features/gamereview/sound.ts",
+    "../src/features/gamereview/engine-wrapper.ts"
+  ]
+}

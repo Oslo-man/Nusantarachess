@@ -1,0 +1,6 @@
+keygeneratora1b2/
+server/data/
+node_modules/
+.env
+.env.*
+docs/

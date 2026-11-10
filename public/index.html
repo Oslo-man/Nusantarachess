@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>NusantaraChess — Bermain, berlatih, dan belajar catur</title>
+  <meta name="description" content="NusantaraChess: bermain online dengan rating Elo, berlatih melawan karakter bot, kerjakan puzzle personal, dan bedah partaimu dengan Game Review bertenaga Stockfish.">
+
+  <!-- SEO:BEGIN (dihasilkan oleh tools/build-seo.js - lihat README) -->
+  <link rel="canonical" href="https://nusantara-chess.vercel.app/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="application-name" content="NusantaraChess">
+  <meta name="apple-mobile-web-app-title" content="NusantaraChess">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NusantaraChess">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:url" content="https://nusantara-chess.vercel.app/">
+  <meta property="og:title" content="NusantaraChess — Bermain, berlatih, dan belajar catur">
+  <meta property="og:description" content="NusantaraChess: bermain online dengan rating Elo, berlatih melawan karakter bot, kerjakan puzzle personal, dan bedah partaimu dengan Game Review bertenaga Stockfish.">
+  <meta property="og:image" content="https://nusantara-chess.vercel.app/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ikon kuda catur NusantaraChess">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NusantaraChess — Bermain, berlatih, dan belajar catur">
+  <meta name="twitter:description" content="NusantaraChess: bermain online dengan rating Elo, berlatih melawan karakter bot, kerjakan puzzle personal, dan bedah partaimu dengan Game Review bertenaga Stockfish.">
+  <meta name="twitter:image" content="https://nusantara-chess.vercel.app/og-image.png">
+  <meta name="twitter:image:alt" content="Ikon kuda catur NusantaraChess">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://nusantara-chess.vercel.app/#website",
+        "url": "https://nusantara-chess.vercel.app/",
+        "name": "NusantaraChess",
+        "alternateName": [
+          "Nusantara Chess",
+          "Nusantara Chess Indonesia"
+        ],
+        "description": "NusantaraChess: bermain online dengan rating Elo, berlatih melawan karakter bot, kerjakan puzzle personal, dan bedah partaimu dengan Game Review bertenaga Stockfish.",
+        "inLanguage": "id"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://nusantara-chess.vercel.app/#app",
+        "url": "https://nusantara-chess.vercel.app/",
+        "name": "NusantaraChess",
+        "alternateName": [
+          "Nusantara Chess",
+          "Nusantara Chess Indonesia"
+        ],
+        "description": "NusantaraChess: bermain online dengan rating Elo, berlatih melawan karakter bot, kerjakan puzzle personal, dan bedah partaimu dengan Game Review bertenaga Stockfish.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "id",
+        "isPartOf": {
+          "@id": "https://nusantara-chess.vercel.app/#website"
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- SEO:END -->
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+</head>
+<body>
+  <!-- NOSCRIPT:BEGIN (dihasilkan oleh tools/build-seo.js - lihat README) -->
+  <noscript>
+    <main>
+      <h1>NusantaraChess — Catur Indonesia, dari latihan sampai rating</h1>
+      <p>NusantaraChess: bermain online dengan rating Elo, berlatih melawan karakter bot, kerjakan puzzle personal, dan bedah partaimu dengan Game Review bertenaga Stockfish.</p>
+      <ul>
+        <li>Bermain online dengan sistem rating Elo (Bullet, Blitz, Rapid) dan validasi langkah di server.</li>
+        <li>Latihan melawan karakter bot Fahri, Adit, Dimas, dan Udin.</li>
+        <li>Puzzle personal dari basis data posisi Lichess.</li>
+        <li>Game Review dengan analisis Stockfish: akurasi, klasifikasi langkah, dan estimasi rating performa.</li>
+      </ul>
+      <p>NusantaraChess membutuhkan JavaScript untuk dimainkan. Aktifkan JavaScript di peramban Anda untuk masuk atau mendaftar.</p>
+    </main>
+  </noscript>
+  <!-- NOSCRIPT:END -->
+  <div id="route-outlet"></div>
+
+  <script>
+    /* AKAR MASALAH YANG DIPERBAIKI: baris ini sebelumnya berbunyi
+       "kalau hostname BUKAN localhost/127.0.0.1, pakai backend produksi
+       Vercel" - logika terbalik yang menganggap SEMUA cara akses selain
+       localhost pasti "produksi". Itu salah: mengakses situs dev lewat
+       IP jaringan lokal (mis. http://192.168.x.x:8080, workflow normal
+       Termux saat frontend dibuka dari HP/perangkat lain di LAN yang
+       sama) JUGA bukan "localhost", jadi kondisi lama ini ikut memaksa
+       window.NUSANTARA_API_BASE ke domain backend PRODUKSI Vercel -
+       menimpa server lokal yang baru saja dijalankan lewat
+       `cd server && npm start`, walau server itu sendiri sehat dan
+       tidak mencatat galat apa pun. Akibatnya SETIAP panggilan API
+       (termasuk POST /api/auth/register) dikirim ke server produksi,
+       bukan ke server dev lokal, dan gagal sebagai network error murni
+       di fetch() - persis pesan "Tidak bisa menghubungi server" dari
+       shared/api-client.js, TANPA ada apa pun yang salah pada server
+       lokal, database Neon, atau endpoint register itu sendiri.
+
+       PERBAIKAN: cek secara EKSPLISIT apakah halaman ini sedang disajikan
+       dari domain frontend produksi Vercel-nya sendiri (bukan "asal
+       bukan localhost"). Domain dev (localhost, 127.0.0.1, IP LAN
+       seperti 192.168.x.x/10.x.x.x, atau *.trycloudflare.com/*.ngrok-*.
+       kalau dipakai untuk tunneling) semuanya jatuh ke fallback
+       location.hostname di shared/api-client.js, yang sudah otomatis
+       benar untuk dev lokal MAUPUN akses lewat IP jaringan. */
+    var PRODUCTION_FRONTEND_HOSTS = ["nusantara-chess.vercel.app"];
+    if (PRODUCTION_FRONTEND_HOSTS.indexOf(location.hostname) !== -1) {
+      window.NUSANTARA_API_BASE = "https://nusantarachess-api.vercel.app/api";
+    }
+  </script>
+  <!-- Bahasa situs (Indonesia/English): dimuat SEKALI di sini untuk semua
+       rute SPA, sebelum router, supaya teks yang disisipkan router/JS
+       langsung ikut diterjemahkan saat English dipilih. -->
+  <script src="/shared/language.js"></script>
+  <!-- Kamus i18n (dipecah): exact + patterns dimuat sebelum i18n-en.js
+       yang menggabungkannya - urutan WAJIB. -->
+  <script src="/shared/i18n-en-exact.js"></script>
+  <script src="/shared/i18n-en-patterns.js"></script>
+  <script src="/shared/i18n-en.js"></script>
+  <script src="/shared/i18n.js"></script>
+  <!-- Aplikasi React/TSX (src/app -> dist/app/main.js, dibangun esbuild lewat `npm run build`):
+       router SPA + semua halaman. Dimuat SETELAH language/i18n di atas supaya teks yang
+       dirender React langsung ikut diterjemahkan saat English dipilih. Skrip fitur
+       (shared/*.js, src/features/**) dimuat per rute oleh router setelah markup ter-commit. -->
+  <script src="/app/main.js"></script>
+</body>
+</html>

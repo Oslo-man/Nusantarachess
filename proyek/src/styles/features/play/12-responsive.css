@@ -1,0 +1,4 @@
+@media (max-width: 420px) {
+  .rating-row { gap: 6px; }
+  .time-option-row { gap: 6px; }
+}

@@ -1,0 +1,32 @@
+<svg
+            width="120"
+            height="120"
+            viewBox="0 0 120 120"
+            id="svg5"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <defs id="defs2" />
+            <g id="layer1">
+            <circle
+                style="fill:#96bc4b;fill-opacity:1;stroke:none;stroke-width:1.00135"
+                id="path111"
+                cx="60"
+                cy="60"
+                r="60"
+            />
+            </g>
+            <g id="layer2">
+            <path
+                style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.72162;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.4"
+                id="path16741"
+                d="M 66.776277,45.238689 75.263044,67.935161 99.471227,68.992963 80.508155,84.077954 86.982866,107.42818 66.776276,94.054749 46.569684,107.42818 53.044396,84.077954 34.081325,68.992961 58.289507,67.935161 Z"
+                transform="matrix(1.1250069,0,0,1.1250069,-15.123769,-26.437045)"
+            />
+            <path
+                style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:5.72162;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                id="path7975"
+                d="M 66.776277,45.238689 75.263044,67.935161 99.471227,68.992963 80.508155,84.077954 86.982866,107.42818 66.776276,94.054749 46.569684,107.42818 53.044396,84.077954 34.081325,68.992961 58.289507,67.935161 Z"
+                transform="matrix(1.1250069,0,0,1.1250069,-15.123769,-29.875923)"
+            />
+            </g>
+        </svg>

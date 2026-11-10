@@ -1,0 +1,12 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": []
+  },
+  "include": ["../src/types/window.d.ts", "../src/types/assets.d.ts", "../src/types/build-defines.d.ts", "../src/app/**/*.ts", "../src/app/**/*.tsx", "../src/key-generator/**/*.ts", "../src/key-generator/**/*.tsx"]
+}

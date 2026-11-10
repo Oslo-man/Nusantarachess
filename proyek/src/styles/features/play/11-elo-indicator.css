@@ -1,0 +1,8 @@
+.elo-change-inline {
+  font-weight: 700;
+  margin-left: 4px;
+}
+.elo-change-inline.positive { color: var(--success); }
+.elo-change-inline.negative { color: var(--error-text); }
+.elo-change-inline.neutral { color: var(--text-muted); }
+

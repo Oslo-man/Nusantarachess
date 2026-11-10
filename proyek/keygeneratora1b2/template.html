@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Key Generator - NusantaraChess</title>
+<!--
+  keygeneratora1b2/index.html  -  BERKAS HASIL BUILD (jangan disunting tangan).
+  Sumber: src/key-generator/*.tsx (React/TSX) + keygeneratora1b2/template.html (shell ini,
+  CSS-nya sudah di dalam tag <style> di bawah). Bangun ulang: npm run build:key-generator
+  (ikut dijalankan oleh `npm run build`). Commit hasilnya sebelum deploy.
+
+  Hasilnya tetap SATU berkas: JS di-inline oleh tools/build-key-generator.mjs, tidak ada
+  stylesheet/skrip eksternal, tidak ada permintaan jaringan - bisa dibuka langsung dari file://
+  atau di-deploy sebagai project Vercel terpisah (Root Directory = keygeneratora1b2).
+  Ada DUA tag script inline: (1) "core" = logika kunci tanpa DOM yang memasang window.__keyGen
+  (dipakai server/scripts/check-key-generator), (2) UI React (urutan ini WAJIB: skrip pertama dibaca oleh skrip pemeriksa server).
+
+  KOMPATIBILITAS DENGAN SERVER (server/lib/one-time-keys.ts) - spesifikasi ada di src/key-generator/spec.ts:
+    - alfabet 32 karakter tanpa I/O/0/1
+    - pola per jenis (prefix + ukuran grup payload + ukuran grup kode cek)
+    - kode cek = 8 byte pertama HMAC-SHA256(rahasia, "<jenis>:<payload>"), tiap byte
+      dipetakan ke alfabet lewat (byte & 31)
+    - rahasia = ONE_TIME_KEY_SECRET (minimal 16 karakter), dipakai sebagai teks UTF-8 apa
+      adanya (BUKAN di-decode dari hex). TIDAK ADA rahasia bawaan: bila kosong/terlalu pendek,
+      generator menolak membuat kunci dan server menolak semua kunci.
+  Status "sudah dipakai" TIDAK ada di sini: disimpan server di tabel one_time_keys saat
+  kunci pertama kali berhasil dipakai. Generator hanya membuat kunci.
+
+  Halaman ini TIDAK memuat rahasia apa pun: rahasia diketik di peramban, tidak disimpan dan
+  tidak dikirim ke mana pun (CSP di keygeneratora1b2/vercel.json memblokir semua permintaan
+  jaringan). Siapa pun yang tahu rahasianya bisa membuat kunci, jadi jaga rahasia itu.
+-->
+<style>
+  :root {
+    --bg-page: #302E2B;
+    --bg-surface: #262522;
+    --bg-raised: #141413;
+    --bg-input: rgba(255, 255, 255, 0.10);
+    --bg-hover: rgba(255, 255, 255, 0.06);
+    --text-primary: #ffffff;
+    --text-body: #dedede;
+    --text-muted: #9A9998;
+    --text-disabled: #706c66;
+    --text-on-accent: #1a1a1a;
+    --accent: #81B64C;
+    --accent-hover: #8BC550;
+    --accent-active: #557a38;
+    --accent-soft: rgba(129, 182, 76, 0.16);
+    --btn-neutral: rgba(255, 255, 255, 0.10);
+    --btn-neutral-hover: rgba(255, 255, 255, 0.16);
+    --btn-neutral-active: #3d3a39;
+    --line: #5D5D5D;
+    --focus: #81B64C;
+    --error: #ff6b5e;
+    --error-bg: rgba(255, 107, 94, 0.14);
+    --success: #81b64c;
+    --warning: #d9a441;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --tap: 44px;
+    --font-sans: Roboto, "Roboto Fallback", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg-page);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  }
+  .wrap { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+
+  h1 { margin: 0; font-size: 1.75rem; line-height: 1.2; color: var(--text-primary); letter-spacing: -0.01em; }
+  h2 { margin: 0 0 0.75rem; font-size: 1rem; color: var(--text-primary); }
+  p { margin: 0; }
+  .lead { margin-top: 0.5rem; color: var(--text-muted); max-width: 60ch; }
+
+  button, input, summary { font: inherit; }
+  button { border: none; cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  .types { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .type { position: relative; display: block; }
+  .type input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .type-face {
+    display: flex; flex-direction: column; gap: 0.25rem;
+    min-height: 76px; padding: 0.75rem 0.875rem;
+    background: var(--bg-surface); border-radius: var(--radius-md);
+    transition: background-color 0.12s ease;
+  }
+  .type:hover .type-face { background: #2e2d2a; }
+  .type input:checked + .type-face { background: var(--accent-soft); box-shadow: inset 0 0 0 2px var(--accent); }
+  .type input:focus-visible + .type-face { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .type-name { font-weight: 700; color: var(--text-primary); }
+  .type-note { font-size: 0.8125rem; color: var(--text-muted); }
+
+  .make { display: flex; gap: 0.5rem; align-items: stretch; }
+  .qty { display: flex; flex-direction: column; gap: 0.25rem; }
+  .qty label { font-size: 0.8125rem; color: var(--text-muted); }
+  input[type="number"], input[type="password"], input[type="text"] {
+    background-color: rgba(0, 0, 0, 0.30);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.14) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(255, 255, 255, 0.035) 100%);
+    color: #F2F1F0; caret-color: var(--accent);
+    border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 0.625rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.50), inset 0 1px 2px rgba(0, 0, 0, 0.40), inset 0 -1px 0 rgba(255, 255, 255, 0.06), inset 0 -10px 14px -12px rgba(255, 255, 255, 0.06), 0 1px 0 rgba(255, 255, 255, 0.04);
+    min-height: var(--tap); padding: 0 0.75rem; width: 100%;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type="number"]:hover, input[type="password"]:hover, input[type="text"]:hover { background-color: rgba(0, 0, 0, 0.36); border-color: rgba(255, 255, 255, 0.18); }
+  input[type="number"]::placeholder, input[type="password"]::placeholder, input[type="text"]::placeholder { color: #9E9D9C; opacity: 1; }
+  input[type="number"] { width: 6rem; }
+  input[type="number"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+    border-color: var(--accent); background-color: rgba(0, 0, 0, 0.40);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.50), inset 0 1px 2px rgba(0, 0, 0, 0.40), 0 0 0 3px rgba(129, 182, 76, 0.22);
+  }
+  .btn {
+    min-height: var(--tap); padding: 0 1.25rem; border-radius: var(--radius-md);
+    background: var(--btn-neutral); color: var(--text-primary); font-weight: 600;
+    transition: background-color 0.12s ease, transform 0.08s ease;
+  }
+  .btn:hover:not(:disabled) { background: var(--btn-neutral-hover); }
+  .btn:active:not(:disabled) { background: var(--btn-neutral-active); transform: scale(0.98); }
+  .btn:disabled { color: var(--text-disabled); cursor: not-allowed; }
+  .btn-primary { background: var(--accent); color: var(--text-on-accent); }
+  .btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+  .btn-primary:active:not(:disabled) { background: var(--accent-active); }
+  .btn-primary:disabled { background: var(--bg-surface); }
+  .btn-small { min-height: 36px; padding: 0 0.875rem; font-size: 0.875rem; }
+  .make .btn-primary { flex: 1; align-self: flex-end; }
+
+  .msg { font-size: 0.875rem; min-height: 1.3em; }
+  .msg.err { color: var(--error); }
+  .msg.ok { color: var(--success); }
+  .msg.warn { color: var(--warning); }
+
+  .results-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .results-head h2 { margin: 0; }
+  .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .empty { padding: 1.25rem; background: var(--bg-surface); border-radius: var(--radius-md); color: var(--text-muted); }
+  .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .row { display: flex; flex-direction: column; gap: 0.5rem; background: var(--bg-surface); border-radius: var(--radius-md); padding: 0.75rem 0.875rem; }
+  .row-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .row-meta { font-size: 0.8125rem; color: var(--text-muted); }
+  .row-meta b { color: var(--text-body); font-weight: 600; }
+  .okmark { color: var(--success); font-weight: 600; }
+  .key {
+    font-family: var(--font-mono); font-size: 1rem; line-height: 1.6; letter-spacing: 0.02em;
+    color: var(--text-primary); overflow-wrap: anywhere; user-select: all;
+  }
+  .key .pre { color: var(--accent); font-weight: 700; }
+  .key .pay { color: var(--text-primary); }
+  .key .chk { color: var(--warning); }
+  .key .dash { color: var(--text-disabled); }
+  .legend { margin-top: 0.5rem; font-size: 0.8125rem; color: var(--text-muted); }
+  .legend .pre { color: var(--accent); font-weight: 700; }
+  .legend .chk { color: var(--warning); font-weight: 700; }
+
+  details { background: var(--bg-surface); border-radius: var(--radius-md); }
+  summary { list-style: none; cursor: pointer; padding: 0.875rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: var(--tap); border-radius: var(--radius-md); color: var(--text-primary); font-weight: 600; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--text-muted); font-size: 1.25rem; line-height: 1; }
+  details[open] summary::after { content: "\2212"; }
+  .details-body { padding: 0 0.875rem 0.875rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .field { display: flex; flex-direction: column; gap: 0.25rem; }
+  .field label { font-size: 0.8125rem; color: var(--text-muted); }
+  .field-row { display: flex; gap: 0.5rem; }
+  .field-row input { flex: 1; min-width: 0; }
+  .compat { font-size: 0.875rem; }
+  .fine { font-size: 0.8125rem; color: var(--text-muted); }
+
+  @media (min-width: 520px) {
+    .types { grid-template-columns: repeat(4, 1fr); }
+    .type-face { min-height: 92px; }
+    .row { flex-direction: row; align-items: center; justify-content: space-between; }
+    .row-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+  }
+  @media (max-width: 519px) { .row-main { display: flex; flex-direction: column; gap: 0.25rem; } .row > .btn { align-self: flex-start; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+/*__CORE__*/
+</script>
+<script>
+/*__UI__*/
+</script>
+</body>
+</html>

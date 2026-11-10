@@ -1,0 +1,8 @@
+{
+  "siteUrl": "https://nusantara-chess.vercel.app",
+  "siteName": "NusantaraChess",
+  "alternateNames": ["Nusantara Chess", "Nusantara Chess Indonesia"],
+  "locale": "id_ID",
+  "language": "id",
+  "publicRoutes": ["/", "/leaderboard", "/lessons"]
+}

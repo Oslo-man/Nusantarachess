@@ -1,0 +1,29 @@
+{
+  "name": "nusantarachess-server",
+  "version": "1.0.0",
+  "description": "Backend Node.js + Express untuk NusantaraChess — auth, validasi langkah, Elo, dan matchmaking (bot profile). Stockfish TIDAK berjalan di sini — tetap 100% di browser pemain (lihat catatan di README.md). Fitur multiplayer (human vs human) sudah dihapus dari proyek ini.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ../tools/build-ts.mjs server",
+    "postinstall": "node ../tools/build-ts.mjs server",
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "sync-shared": "node scripts/sync-shared.js",
+    "check-key-generator": "node scripts/check-key-generator.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^6.0.3"
+  }
+}

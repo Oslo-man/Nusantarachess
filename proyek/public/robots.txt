@@ -1,0 +1,11 @@
+# robots.txt - NusantaraChess
+# Dihasilkan oleh tools/build-seo.js dari site.config.json - jangan edit manual.
+#
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://nusantara-chess.vercel.app/sitemap.xml
+Sitemap: https://nusantara-chess.vercel.app/sitemap-profiles.xml

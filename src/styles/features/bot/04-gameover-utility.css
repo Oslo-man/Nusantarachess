@@ -1,0 +1,41 @@
+.modal-overlay-bottom {
+  display: none;
+  position: fixed; left: 0; right: 0; bottom: 0; top: auto;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 140px);
+  z-index: 2000;
+  align-items: flex-end; justify-content: center;
+  padding: 0 calc(14px * var(--ui-scale)) calc(18px * var(--ui-scale));
+  pointer-events: none;
+}
+.modal-overlay-bottom .gameover-panel { pointer-events: auto; }
+
+.gameover-panel {
+  width: 100%; max-width: calc(440px * var(--ui-scale));
+  background: var(--bg-surface-raised); border-radius: var(--radius-lg);
+  padding: calc(18px * var(--ui-scale)) calc(20px * var(--ui-scale)); text-align: center;
+  box-shadow: var(--shadow-raised);
+  border: 1px solid transparent;
+}
+.gameover-message {
+  font-size: calc(16px * var(--ui-scale)); font-weight: 700; color: var(--text-primary);
+  line-height: 1.4; margin-bottom: calc(14px * var(--ui-scale));
+}
+.gameover-buttons { display: flex; gap: calc(10px * var(--ui-scale)); }
+.gameover-btn {
+  flex: 1; min-height: var(--tap-min); padding: calc(11px * var(--ui-scale)) calc(8px * var(--ui-scale)); border-radius: var(--radius-md);
+  font-size: calc(13px * var(--ui-scale)); font-weight: 700; cursor: pointer;
+  font-family: var(--font-sans);
+  border: 1px solid transparent;
+  transition: var(--btn-transition);
+}
+.gameover-btn-primary { background: var(--btn-primary-bg); color: var(--btn-primary-text); font-weight: 800; box-shadow: var(--btn-primary-shadow); }
+.gameover-btn-primary:hover { background: var(--btn-primary-bg-hover); box-shadow: var(--btn-primary-shadow-hover); }
+.gameover-btn-primary:active { background: var(--btn-primary-bg-active); box-shadow: var(--btn-primary-shadow-active); }
+.gameover-btn-secondary { background: var(--btn-neutral); color: var(--text-primary) }
+.gameover-btn-secondary:hover { background: var(--btn-neutral-hover) }
+.gameover-btn:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+
+.no-highlight { -webkit-touch-callout:none; -webkit-user-select:none; -moz-user-select:none; user-select:none; }
+
+.hidden { display: none !important; }
+

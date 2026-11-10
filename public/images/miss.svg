@@ -1,0 +1,35 @@
+<svg
+            width="120"
+            height="120"
+            viewBox="0 0 120 120"
+            id="svg5"
+            xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <defs id="defs2" />
+            <g
+            id="layer1"
+            style="display:inline"
+            >
+            <ellipse
+                style="fill:#ee6b55;fill-opacity:1;stroke:none;stroke-width:0.999462"
+                id="path111"
+                cx="60"
+                cy="59.773922"
+                rx="60"
+                ry="59.773922"
+            />
+            </g>
+            <g id="layer5">
+            <path
+                style="display:inline;mix-blend-mode:normal;fill:none;fill-opacity:0.4;stroke:#000000;stroke-width:4.457;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.4"
+                d="M 81.271867,31.490925 91.858943,42.117017 70.606758,63.291167 91.78091,84.543351 81.154817,95.130427 59.980667,73.878242 38.728483,95.052394 28.141408,84.426301 49.393592,63.252151 28.21944,41.999967 38.845533,31.412892 60.019683,52.665076 Z"
+                id="path114280"
+            />
+            <path
+                style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:4.457;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                d="M 81.271867,28.219441 91.858943,38.845533 70.606758,60.019683 91.78091,81.271867 81.154817,91.858943 59.980667,70.606758 38.728483,91.78091 28.141408,81.154817 49.393592,59.980667 28.21944,38.728483 38.845533,28.141408 60.019683,49.393592 Z"
+                id="path31371"
+            />
+            </g>
+        </svg>

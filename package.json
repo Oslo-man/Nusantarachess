@@ -1,0 +1,52 @@
+{
+  "name": "nusantara-chess",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NusantaraChess - frontend React/TSX + skrip fitur (dibangun ke dist/) dan fungsi SSR Vercel (api/ssr). Backend Express ada di server/.",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "npm run build:web && npm run build:ssr && npm run build:node && npm run build:key-generator",
+    "build:web": "node tools/prepare-dist.mjs && node tools/build-ts.mjs web && node tools/build-app.mjs && node tools/verify-dist.mjs",
+    "build:app": "node tools/build-app.mjs",
+    "build:protect": "node tools/minify-dist.mjs",
+    "build:ssr": "node tools/build-ssr.mjs",
+    "build:node": "node tools/build-ts.mjs node",
+    "build:key-generator": "node tools/build-key-generator.mjs",
+    "build:vercel": "node tools/prepare-dist.mjs && node tools/build-ts.mjs web && node tools/build-app.mjs --production && node tools/build-ssr.mjs --vercel && node tools/minify-dist.mjs && node tools/verify-dist.mjs --vercel",
+    "dev": "npm run build:web && node tools/build-app.mjs --watch",
+    "typecheck": "node tools/typecheck.mjs",
+    "check:seo": "node tools/build-ts.mjs node && node tools/check-seo.js",
+    "seo": "node tools/build-ts.mjs node && node tools/build-seo.js",
+    "serve": "npx --yes serve -s dist -l 8080",
+    "test:keygen": "node tests/key-generator-core.mjs",
+    "test:bot-roster": "node tests/unit/bot-roster-sync.mjs",
+    "test:e2e": "node tests/e2e/smoke.mjs --expect-react",
+    "test:pieces": "node tests/e2e/pieces.mjs",
+    "test:admin": "node tests/e2e/admin.mjs",
+    "test:depth": "node tests/e2e/gamereview-depth.mjs",
+    "test:gr-nav": "node tests/e2e/gamereview-nav.mjs",
+    "test:unit": "node tests/unit/gamereview-engine.mjs && node tests/unit/gamereview-fallback.mjs && node tests/unit/gamereview-i18n.mjs && node tests/unit/review-scoring.mjs",
+    "test:ssr": "node tests/e2e/ssr.mjs",
+    "test:agus": "node tests/unit/agus-uci.mjs",
+    "test:ilham": "node tests/unit/ilham-uci.mjs",
+    "test:josep": "node tests/unit/josep-uci.mjs",
+    "test:asep": "node tests/unit/asep-uci.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "esbuild": "^0.28.1",
+    "typescript": "^6.0.3",
+    "playwright": "^1.50.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "overrides": {
+    "minimatch": "^11.0.3"
+  }
+}
